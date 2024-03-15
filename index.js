@@ -8,11 +8,13 @@ const bot = new Bot(process.env.BOT_API_KEY);
 async function fetchStories(conversation, ctx) {
   await ctx.reply("Please enter public instagram user url or username");
   const { message } = await conversation.wait();
-  const { data } = await getUserStories(message.text);
-  if (!data.items.length) {
+  const {
+    data: { items: stories },
+  } = await getUserStories(message.text);
+  if (!stories.length) {
     ctx.reply("this user has no posted story");
   }
-  data?.items.map((story) => {
+  stories?.map((story) => {
     if (story.video_url) {
       ctx.replyWithVideo(
         new InputFile({
@@ -38,7 +40,7 @@ bot.command("cancel", async (ctx) => {
 });
 
 bot.command("start", async (ctx) => {
-  await ctx.reply("barev gyada");
+  await ctx.reply("Hey, thanks to join to bot");
 });
 
 bot.use(createConversation(fetchStories));
