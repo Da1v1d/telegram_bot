@@ -1,8 +1,8 @@
+import { conversations, createConversation } from "@grammyjs/conversations";
 import "dotenv/config";
 import { GrammyError, HttpError, session } from "grammy";
-import { conversations, createConversation } from "@grammyjs/conversations";
-import { bot } from "./bot/index.js";
-import { storiesConversation } from "./bot/conversations/instagram.conversation.js";
+import { storiesConversation } from "./bot/conversations/instagram.conversation.ts";
+import { bot } from "./bot/index.ts";
 
 bot.api.setMyCommands([
   { command: "story", description: "Download a public user posted stories" },

@@ -5,15 +5,26 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node src/index.ts",
+    "dev": "nodemon src/index.ts",
+    "build": "tsc",
+    "lint": "tsc --noEmit"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@grammyjs/conversations": "^1.2.0",
+    "axios": "^1.9.0",
     "dotenv": "^16.4.5",
     "grammy": "^1.21.1",
     "nodemon": "^3.1.0"
+  },
+  "devDependencies": {
+    "@grammyjs/types": "^3.20.0",
+    "@types/axios": "^0.14.4",
+    "@types/dotenv": "^8.2.3",
+    "@types/node": "^22.15.17",
+    "typescript": "^5.8.3"
   }
 }

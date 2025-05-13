@@ -1,7 +1,7 @@
-import { InputFile } from "grammy";
+import { Context, InputFile } from "grammy";
 import { getUserStories } from "../../api/instagram.js";
 
-export async function storiesConversation(conversation, ctx) {
+export async function storiesConversation(conversation, ctx: Context) {
   await ctx.reply("Please enter public instagram user url or username");
   const { message } = await conversation.wait();
   try {
