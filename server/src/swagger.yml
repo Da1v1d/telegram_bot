@@ -1,0 +1,63 @@
+openapi: 3.0.0
+info:
+  title: Telegram Bot API
+  version: "1.0"
+paths:
+  /api/users:
+    get:
+      tags:
+        - Users
+      responses:
+        "200":
+          description: OK
+
+    post:
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCatDto"
+      responses:
+        "201":
+          description: Created
+  /api/users/{id}:
+    get:
+      tags:
+        - Users
+      summary: Get User by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+
+    post:
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCatDto"
+      responses:
+        "201":
+          description: Created
+
+components:
+  schemas:
+    CreateUserDto:
+      type: object
+      properties:
+        name:
+          type: string
+        age:
+          type: integer
+      required: [name, age]
