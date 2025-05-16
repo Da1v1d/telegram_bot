@@ -1,8 +1,11 @@
 import { Router } from "express";
 import { ROUTES } from "./config/constants";
-import userRoutes from "./users/users.routes";
+import authRoutes from "./features/auth/auth.routes";
+import userRoutes from "./features/users/users.routes";
 
-const router = Router();
-router.use(ROUTES.USERS, userRoutes);
+const routes = Router();
 
-export default router;
+routes.use(ROUTES.USERS, userRoutes);
+routes.use(ROUTES.AUTH, authRoutes);
+
+export default routes;
