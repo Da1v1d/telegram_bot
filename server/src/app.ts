@@ -5,9 +5,8 @@ import express from "express";
 import swaggerUi from "swagger-ui-express";
 import YAML from "yamljs";
 import { ENV_VARIABLES } from "./config/constants";
-import router from "./routes";
-// import { errorHandler } from "./middlewares/error-handler";
-// import routes from "./routes";
+import { errorHandler } from "./middlewares/error-handler";
+import routes from "./routes";
 
 dotenv.config();
 const app = express();
@@ -34,8 +33,8 @@ const swaggerDoc = YAML.load("./src/swagger.yml");
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 // app routes & error handler
-app.use("/api", router);
-// app.use(errorHandler);
+app.use("/api", routes);
+app.use(errorHandler);
 
 const PORT = ENV_VARIABLES.PORT;
 
