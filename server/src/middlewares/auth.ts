@@ -12,13 +12,15 @@ export const authMiddleware = (
 ) => {
   const auth = req.headers.authorization;
   if (!auth || !auth.startsWith("Bearer ")) {
-    return res.status(401).json({ message: "No token provided" });
+    res.status(401).json({ message: "No token provided" });
+    return;
   }
   const token = auth.split(" ")[1];
   try {
     req.user = verifyAccessToken(token);
     next();
   } catch (e) {
-    return res.status(401).json({ message: "Invalid or expired access token" });
+    res.status(401).json({ message: "Invalid or expired access token" });
+    return;
   }
 };
